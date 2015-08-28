@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class DeletingScript : MonoBehaviour {
-
-	// Use this for initialization
+	
 	void Start () {
 
 	}
