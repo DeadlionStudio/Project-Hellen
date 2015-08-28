@@ -13,11 +13,16 @@ public class DeletingScript : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider myTrigger) 
-	{
-		if (myTrigger.gameObject.name == "Souls" || myTrigger.gameObject.name == "Souls(Clone)")
-		{
-			Destroy(myTrigger.gameObject, 0.1f);
+	void OnTriggerEnter(Collider myTrigger) {
+		if (myTrigger.gameObject.name == "Souls" || myTrigger.gameObject.name == "Souls(Clone)") {
+			Rigidbody rigidbody = myTrigger.gameObject.GetComponent<Rigidbody>();
+			if (name == "Hell") {
+				rigidbody.AddForce(new Vector3(0, -500f, 0));
+			}
+			if (name == "Heaven") {
+				rigidbody.AddForce(new Vector3(0, 500f, 0));
+			}
+			Destroy(myTrigger.gameObject, 5.0f);
 		}
 	}
 }
