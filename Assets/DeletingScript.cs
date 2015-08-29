@@ -13,6 +13,7 @@ public class DeletingScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider myTrigger) {
+		myTrigger.gameObject.GetComponent<DragNDrop> ().IsMouseTriger = true;
 		if (myTrigger.gameObject.name == "Souls" || myTrigger.gameObject.name == "Souls(Clone)") {
 			Rigidbody rigidbody = myTrigger.gameObject.GetComponent<Rigidbody>();
 			if (name == "Hell") {
