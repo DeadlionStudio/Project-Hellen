@@ -42,7 +42,7 @@ public class MainSoulScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		System.Random rnd = new System.Random();
-		int randomInt = rnd.Next (0, 2);
+		int randomInt = rnd.Next (2);
 		if (randomInt == 0) {
 			this.isGood = true;
 			this.firstHint = "Maybe good man";
