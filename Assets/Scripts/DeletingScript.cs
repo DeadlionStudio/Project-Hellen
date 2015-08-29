@@ -17,19 +17,20 @@ public class DeletingScript : MonoBehaviour {
 		if (triggerObj.name == "Souls" || triggerObj.name == "Souls(Clone)") {
 			Rigidbody rigidbody = triggerObj.GetComponent<Rigidbody>();
 			GameObject camera = GameObject.Find("Main Camera");
-
-			if (name == "Hell") {
+			if (name == "Hell" || name == "Heaven") {
 				triggerObj.GetComponent<DragNDrop>().IsMouseTriger = true;
-				rigidbody.AddForce(new Vector3(0, -8, 0));
-				camera.GetComponent<StatisticScript>().addSoulToHell(triggerObj);
-			}
-
-			if (name == "Heaven") {
-				triggerObj.GetComponent<DragNDrop>().IsMouseTriger = true;
-				rigidbody.AddForce(new Vector3(0, 8, 0));
-				camera.GetComponent<StatisticScript>().addSoulToHeaven(triggerObj);
 			}
 			if (triggerObj.GetComponent<DragNDrop>().IsMouseUp) {
+				if (name == "Hell") {
+					rigidbody.AddForce(new Vector3(0, -8, 0));
+					camera.GetComponent<StatisticScript>().addSoulToHell(triggerObj);
+				}
+
+				if (name == "Heaven") {
+					rigidbody.AddForce(new Vector3(0, 8, 0));
+					camera.GetComponent<StatisticScript>().addSoulToHeaven(triggerObj);
+				}
+
 				Destroy(triggerObj, 3f);
 			}
 		}
