@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DeletingScript : MonoBehaviour {
 
+	bool isDestroyStart = false;
+
 	void Start () {
 
 	}
@@ -21,14 +23,21 @@ public class DeletingScript : MonoBehaviour {
 				triggerObj.GetComponent<DragNDrop>().IsMouseTriger = true;
 			}
 			if (triggerObj.GetComponent<DragNDrop>().IsMouseUp) {
+
 				if (name == "Hell") {
+					if (isDestroyStart == false) {
+						isDestroyStart = true;
+						camera.GetComponent<StatisticScript>().addSoulToHell(triggerObj);
+					}
 					rigidbody.AddForce(new Vector3(0, -8, 0));
-					camera.GetComponent<StatisticScript>().addSoulToHell(triggerObj);
 				}
 
 				if (name == "Heaven") {
+					if (isDestroyStart == false) {
+						isDestroyStart = true;
+						camera.GetComponent<StatisticScript>().addSoulToHeaven(triggerObj);
+					}
 					rigidbody.AddForce(new Vector3(0, 8, 0));
-					camera.GetComponent<StatisticScript>().addSoulToHeaven(triggerObj);
 				}
 
 				Destroy(triggerObj, 3f);
