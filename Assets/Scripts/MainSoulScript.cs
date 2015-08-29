@@ -7,6 +7,10 @@ public class MainSoulScript : MonoBehaviour {
 	private string secondHint;
 	private string thirdHint;
 
+	private float x;
+	private float y;
+	private float t;
+
 	public bool canShowSecondHint = false;
 	public bool canShowThirdHint = false;
 
@@ -41,6 +45,7 @@ public class MainSoulScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		t = 0f;
 		System.Random rnd = new System.Random();
 		int randomInt = rnd.Next (2);
 		if (randomInt == 0) {
@@ -58,6 +63,13 @@ public class MainSoulScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		float x = 0.02f * Mathf.Cos (t);
+		float y = 0.04f * Mathf.Sin (t);
+		transform.Translate (x, y, 0f);
+		if (t > 6.28f) {
+			t = 0f;
+		} else {
+			t += 0.01f;
+		}
 	}
 }
