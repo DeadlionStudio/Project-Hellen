@@ -6,10 +6,17 @@ public class DragNDrop : MonoBehaviour {
 	float posX;
 	float posY;
 
+	private bool isMouseUp = false;
 	private bool isMouseTriger = false;
+	
+	public bool IsMouseUp {
+		set { isMouseUp = value; }
+		get { return isMouseUp; }
+	}
 
 	public bool IsMouseTriger {
-		set {isMouseTriger = value;}
+		set { isMouseTriger = value; }
+		get { return isMouseTriger; }
 	}
 	
 	void OnMouseDown(){
@@ -20,16 +27,17 @@ public class DragNDrop : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
+		if (IsMouseTriger == true) {
+			IsMouseUp = true;
+		}
 	}
 	
 	void OnMouseDrag(){
-		if (!isMouseTriger) {
-			Vector3 curPos = 
-				new Vector3 (Input.mousePosition.x - posX, 
-				            Input.mousePosition.y - posY, dist.z);  
-			
-			Vector3 worldPos = Camera.main.ScreenToWorldPoint (curPos);
-			transform.position = worldPos;
-		}
+		Vector3 curPos = 
+			new Vector3 (Input.mousePosition.x - posX, 
+			            Input.mousePosition.y - posY, dist.z);  
+		
+		Vector3 worldPos = Camera.main.ScreenToWorldPoint (curPos);
+		transform.position = worldPos;
 	}
 }

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DeletingScript : MonoBehaviour {
-	
+
 	void Start () {
 
 	}
@@ -12,25 +12,27 @@ public class DeletingScript : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider myTrigger) {
+	void OnTriggerStay(Collider myTrigger) {
 		GameObject triggerObj = myTrigger.gameObject;
-		triggerObj.GetComponent<DragNDrop> ().IsMouseTriger = true;
-
 		if (triggerObj.name == "Souls" || triggerObj.name == "Souls(Clone)") {
 			Rigidbody rigidbody = triggerObj.GetComponent<Rigidbody>();
 			GameObject camera = GameObject.Find("Main Camera");
 
 			if (name == "Hell") {
-				rigidbody.AddForce(new Vector3(0, -500f, 0));
+				triggerObj.GetComponent<DragNDrop>().IsMouseTriger = true;
+				rigidbody.AddForce(new Vector3(0, -8, 0));
 				camera.GetComponent<StatisticScript>().addSoulToHell(triggerObj);
 			}
 
 			if (name == "Heaven") {
-				rigidbody.AddForce(new Vector3(0, 500f, 0));
+				triggerObj.GetComponent<DragNDrop>().IsMouseTriger = true;
+				rigidbody.AddForce(new Vector3(0, 8, 0));
 				camera.GetComponent<StatisticScript>().addSoulToHeaven(triggerObj);
 			}
-
-			Destroy(triggerObj, 5.0f);
+			if (triggerObj.GetComponent<DragNDrop>().IsMouseUp) {
+				Destroy(triggerObj, 3f);
+			}
 		}
 	}
+
 }
