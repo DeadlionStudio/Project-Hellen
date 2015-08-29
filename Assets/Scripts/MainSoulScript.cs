@@ -11,6 +11,9 @@ public class MainSoulScript : MonoBehaviour {
 	private float y;
 	private float t;
 
+	public float a = 0.006f;
+	public float b = 0.004f;
+
 	public bool canShowSecondHint = false;
 	public bool canShowThirdHint = false;
 
@@ -63,8 +66,8 @@ public class MainSoulScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float x = 0.02f * Mathf.Cos (t);
-		float y = 0.04f * Mathf.Sin (t);
+		float x = a * Mathf.Cos (t);
+		float y = b * Mathf.Sin (t);
 		transform.Translate (x, y, 0f);
 		if (t > 6.28f) {
 			t = 0f;
