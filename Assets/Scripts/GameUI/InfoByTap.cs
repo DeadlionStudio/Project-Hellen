@@ -35,10 +35,10 @@ public class InfoByTap : MonoBehaviour {
 			setDisplayInformation("\tEarth", "\tYour rating on Earth: " + this.cameraScript.ratingOnEarth, string.Empty, string.Empty);
 			InfoByTap.isEartheChoosen = true;
 		} else if (tappedObjectName == "Heaven") {
-			setDisplayInformation("\tHeaven", "\tPercent of good people in Heaven: " + this.cameraScript.heaven.percentOfGoodSouls * 100, "\tPercent of bad people in Heaven: " + this.cameraScript.heaven.percentOfBadSouls * 100, string.Empty);
+			setDisplayInformation("\tHeaven", "\tPercent of good people in Heaven: " + (this.cameraScript.heaven.percentOfGoodSouls * 100), "\tPercent of bad people in Heaven: " + (this.cameraScript.heaven.percentOfBadSouls * 100), string.Empty);
 			InfoByTap.isHeavenChoosen = true;
 		} else if (tappedObjectName == "Hell") {
-			setDisplayInformation("\tHell", "\tPercent of good people in Hell: " + this.cameraScript.hell.percentOfGoodSouls * 100, "\tPercent of bad people in Hell: " + this.cameraScript.hell.percentOfBadSouls * 100, string.Empty);
+			setDisplayInformation("\tHell", "\tPercent of good people in Hell: " + (this.cameraScript.hell.percentOfGoodSouls * 100), "\tPercent of bad people in Hell: " + (this.cameraScript.hell.percentOfBadSouls * 100), string.Empty);
 			InfoByTap.isHellChoosen = true;
 		} else if (tappedObjectName == "Souls" || tappedObjectName == "Souls(Clone)") {
 			MainSoulScript soulsScript = gameObject.GetComponent<MainSoulScript>();
@@ -61,9 +61,9 @@ public class InfoByTap : MonoBehaviour {
 		if (InfoByTap.isEartheChoosen) {
 			setDisplayInformation("\tEarth", "\tYour rating on Earth: " + this.cameraScript.ratingOnEarth, string.Empty, string.Empty);
 		} else if (InfoByTap.isHeavenChoosen) {
-			setDisplayInformation("\tHeaven", "\tPercent of good people in Heaven: " + this.cameraScript.heaven.percentOfGoodSouls, "\tPercent of bad people in Heaven: " + this.cameraScript.heaven.percentOfBadSouls, string.Empty);
+			setDisplayInformation("\tHeaven", "\tPercent of good people in Heaven: " + (this.cameraScript.heaven.percentOfGoodSouls * 100), "\tPercent of bad people in Heaven: " + (this.cameraScript.heaven.percentOfBadSouls * 100), string.Empty);
 		} else if (InfoByTap.isHellChoosen) {
-			setDisplayInformation("\tHell", "\tPercent of good people in Hell: " + this.cameraScript.hell.percentOfGoodSouls, "\tPercent of bad people in Hell: " + this.cameraScript.hell.percentOfBadSouls, string.Empty);
+			setDisplayInformation("\tHell", "\tPercent of good people in Hell: " + (this.cameraScript.hell.percentOfGoodSouls * 100), "\tPercent of bad people in Hell: " + (this.cameraScript.hell.percentOfBadSouls * 100), string.Empty);
 		}
 	}
 }
