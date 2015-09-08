@@ -6,6 +6,7 @@ public class MainSoulScript : MonoBehaviour {
 	private string firstHint;
 	private string secondHint;
 	private string thirdHint;
+	private string soulName;
 
 	private float x;
 	private float y;
@@ -16,6 +17,11 @@ public class MainSoulScript : MonoBehaviour {
 
 	public bool canShowSecondHint = false;
 	public bool canShowThirdHint = false;
+
+	public string Name
+	{
+		get { return this.soulName; }
+	}
 
 	public bool isForHeaven
 	{
@@ -49,6 +55,7 @@ public class MainSoulScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		t = 0f;
+		this.soulName = "Eugenio Syson";
 		System.Random rnd = new System.Random();
 		int randomInt = rnd.Next (2);
 		if (randomInt == 0) {

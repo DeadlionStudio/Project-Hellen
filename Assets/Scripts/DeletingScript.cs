@@ -14,35 +14,42 @@ public class DeletingScript : MonoBehaviour {
 	
 	}
 
-	void OnTriggerStay(Collider myTrigger) {
+
+	void OnTriggerStay(Collider myTrigger) 
+	{
 		GameObject triggerObj = myTrigger.gameObject;
 		if (triggerObj.name == "Souls" || triggerObj.name == "Souls(Clone)") {
-			Rigidbody rigidbody = triggerObj.GetComponent<Rigidbody>();
-			GameObject camera = GameObject.Find("Main Camera");
+			Rigidbody rigidbody = triggerObj.GetComponent<Rigidbody> ();
+			GameObject camera = GameObject.Find ("Main Camera");
 			if (name == "Hell" || name == "Heaven") {
-				triggerObj.GetComponent<DragNDrop>().IsMouseTriger = true;
+				triggerObj.GetComponent<DragNDrop> ().IsMouseTriger = true;
 			}
-			if (triggerObj.GetComponent<DragNDrop>().IsMouseUp) {
+			if (triggerObj.GetComponent<DragNDrop> ().IsMouseUp) {
 
 				if (name == "Hell") {
 					if (isDestroyStart == false) {
 						isDestroyStart = true;
-						camera.GetComponent<StatisticScript>().addSoulToHell(triggerObj);
+						camera.GetComponent<StatisticScript> ().addSoulToHell (triggerObj);
 					}
-					rigidbody.AddForce(new Vector3(0, -8, 0));
+					rigidbody.AddForce (new Vector3 (0, -8, 0));
 				}
 
 				if (name == "Heaven") {
 					if (isDestroyStart == false) {
 						isDestroyStart = true;
-						camera.GetComponent<StatisticScript>().addSoulToHeaven(triggerObj);
+						camera.GetComponent<StatisticScript> ().addSoulToHeaven (triggerObj);
 					}
-					rigidbody.AddForce(new Vector3(0, 8, 0));
+					rigidbody.AddForce (new Vector3 (0, 8, 0));
 				}
 
-				Destroy(triggerObj, 3f);
+				Destroy (triggerObj, 3f);
 			}
 		}
+	}
+
+	void OnTriggerExit(Collider myTrigger)
+	{
+		isDestroyStart = false;
 	}
 
 }

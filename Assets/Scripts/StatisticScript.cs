@@ -5,7 +5,7 @@ public class StatisticObject
 {
 	private int numberOfGoodSouls;
 	private int numberOfBadSouls ;
-
+		
 	public StatisticObject(int numberOfGood, int numberOfBad)
 	{
 		this.numberOfBadSouls = numberOfBad;
@@ -44,10 +44,10 @@ public class StatisticScript : MonoBehaviour {
 	private const double rateRatio = 0.95;
 	private const double ratingRatio = 0.0001;
 
-	private double ratingOnEarth = 1;
+	public double ratingOnEarth = 1;
 
-	private StatisticObject heaven;
-	private StatisticObject hell;
+	public StatisticObject heaven;
+	public StatisticObject hell;
 	// Use this for initialization
 	void Start () {
 		this.heaven = new StatisticObject (1, 0);
